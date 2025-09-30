@@ -46,9 +46,12 @@ def analizza_consumi_energetici(tupla, cittaScelta, risorsa):
                 if(tipoDiRisorsa[1] == maxRisorsa and tipoDiRisorsa[0] == risorsa):
                     mesiMaxRisorsa.append(mese)
 
-    media = round(totaleRisorsa / contatoreRisorse)
+    if(contatoreRisorse > 0):
+        media = round(totaleRisorsa / contatoreRisorse)
+        return (media, (maxRisorsa, mesiMaxRisorsa))
+    else:
+        return "Impossibile trovare la città oppure il tipo di risorsa."
 
-    return (media, (maxRisorsa, mesiMaxRisorsa))
 
 citta = input("Inserisci la città da voler analizzare: ")
 risorsa = input("Inserisci il tipo di risorsa da analizzare (elettrico o gas): ")
